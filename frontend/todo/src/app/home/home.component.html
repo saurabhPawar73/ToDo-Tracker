@@ -1,0 +1,58 @@
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <mat-card class="text-center mt-3">
+                    <mat-card-header><span>Enter your task</span></mat-card-header>
+                    &nbsp;
+                    <mat-card-content>
+                        <div>
+                            <form #taskForm="ngForm" (ngSubmit)="addTask(taskForm)">
+                                <p>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Task Name</mat-label>
+                                        <input ngModel name="taskName" id="taskName" matInput placeholder="taskName"
+                                            type="text">
+                                    </mat-form-field>
+                                </p>
+
+
+                                <p>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Task Description</mat-label>
+                                        <input ngModel name="taskDescription" id="taskDescription" matInput placeholder="Enter Description"
+                                            type="text">
+                                    </mat-form-field>
+                                </p>
+
+                                <button mat-raised-button color="primary" type="submit">Add Task</button>
+                            </form>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-8">
+
+                <mat-card *ngIf="emptyTasks">
+                    <mat-card-content>
+                        No Tasks addded yet
+                    </mat-card-content>
+                </mat-card>
+
+                <div *ngFor="let tasks of tasksList">                    
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title><p>{{tasks.taskName}}</p>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>{{tasks.taskDescription}}</p>
+                    </mat-expansion-panel>
+                    <br>
+                    
+            </div>
+
+            </div>
+        </div>
+    </div>
+</body>

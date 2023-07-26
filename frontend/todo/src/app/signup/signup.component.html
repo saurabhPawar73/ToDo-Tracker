@@ -1,0 +1,46 @@
+
+  <div class="container mt-5">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <!-- <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        <h2 class="container text-center">Sign In</h2>
+        </mat-card-header>
+        <img mat-card-image src=" https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80" alt="">
+        <mat-card-content>
+        <div class="container mt-3 text-center">
+          <form #signupform="ngForm" (ngSubmit)="registerUser(signupform)">
+            
+            <mat-form-field appearance="outline" class="w-70">
+              <mat-label>Email ID</mat-label>
+              <input ngModel name="emailId" id="emailId" matInput placeholder="Enter email id">
+          </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline" class="w-70">
+                <mat-label>Name</mat-label>
+                <input ngModel name="name" id="name" matInput placeholder="Enter Your Name">
+                
+            </mat-form-field>
+                <br>
+
+            <mat-form-field appearance="outline" class="w-70">
+                <mat-label>Password</mat-label>
+                <input ngModel name="password" id="password" matInput placeholder="Enter a password">
+            </mat-form-field>
+
+              <div class="text-center">
+            <button type="submit" mat-raised-button color="accent">Register
+            </button>
+              </div>  
+          </form>
+        </div>
+        </mat-card-content>
+      </mat-card>
+</div>
+
+
+
+
+
+  

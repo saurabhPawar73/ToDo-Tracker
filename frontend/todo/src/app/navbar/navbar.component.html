@@ -1,0 +1,15 @@
+<div >
+    <p>
+        <mat-toolbar color="primary" width="100">
+        <span> <a class="navbar-brand" href="#">ToDo</a></span>
+        <span class="example-spacer"></span>
+        <button *ngIf="checkLogin()" routerLink="/login" style="height: 6vh; width: 5vh;" mat-icon-button class="example-icon">
+         <mat-icon >login</mat-icon>
+        </button>
+        <button mat-button (click)="logout()" *ngIf="!checkLogin()">
+          logout
+        </button>
+      </mat-toolbar>
+      </p>
+</div>
+

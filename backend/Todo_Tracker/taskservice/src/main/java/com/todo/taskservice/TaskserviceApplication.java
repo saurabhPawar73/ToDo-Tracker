@@ -21,7 +21,8 @@ public class TaskserviceApplication {
 	public FilterRegistrationBean filterRegistrationBean(){
 		FilterRegistrationBean frObj=new FilterRegistrationBean<>();
 		frObj.setFilter(new JwtFilter());
-		frObj.addUrlPatterns("/taskservice/addTask", "/taskservice/get-user");
+		frObj.addUrlPatterns("/taskservice/addTask", "/taskservice/get-user", "/taskservice/delete-task" , "/taskservice/get-index"
+		, "/taskservice/update-task/*");
 		return frObj;
 	}
 

@@ -1,0 +1,10 @@
+.box{
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px;
+
+}
+
+.container{
+    margin-top: 5px;
+}

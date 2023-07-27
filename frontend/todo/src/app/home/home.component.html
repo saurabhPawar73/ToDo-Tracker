@@ -2,17 +2,17 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-4">
+            <div class="col-3">
                 <mat-card class="text-center mt-3">
                     <mat-card-header><span>Enter your task</span></mat-card-header>
                     &nbsp;
                     <mat-card-content>
                         <div>
-                            <form #taskForm="ngForm" (ngSubmit)="addTask(taskForm)">
+                            <form #taskForm="ngForm" (ngSubmit)="addTask(taskForm) ">
                                 <p>
                                     <mat-form-field appearance="outline">
                                         <mat-label>Task Name</mat-label>
-                                        <input ngModel name="taskName" id="taskName" matInput placeholder="taskName"
+                                        <input [(ngModel)]="task.taskName" name="taskName" id="taskName" matInput placeholder="taskName"
                                             type="text">
                                     </mat-form-field>
                                 </p>
@@ -21,36 +21,44 @@
                                 <p>
                                     <mat-form-field appearance="outline">
                                         <mat-label>Task Description</mat-label>
-                                        <input ngModel name="taskDescription" id="taskDescription" matInput placeholder="Enter Description"
+                                        <input ngModel [(ngModel)]="task.taskDescription" name="taskDescription" id="taskDescription" matInput placeholder="Enter Description"
                                             type="text">
                                     </mat-form-field>
                                 </p>
 
-                                <button mat-raised-button color="primary" type="submit">Add Task</button>
+                                <button mat-raised-button color="primary" type="submit" name="action" value="save" #addButton>Add Task</button> &nbsp;
+                                <button  mat-raised-button color="accent" type="submit" name="action" value="update" #updateButton>Update Task</button>
                             </form>
                         </div>
                     </mat-card-content>
                 </mat-card>
             </div>
-            <div class="col-8">
+            <div class="col-9">
 
                 <mat-card *ngIf="emptyTasks">
                     <mat-card-content>
                         No Tasks addded yet
                     </mat-card-content>
                 </mat-card>
-
-                <div *ngFor="let tasks of tasksList">                    
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title><p>{{tasks.taskName}}</p>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <p>{{tasks.taskDescription}}</p>
-                    </mat-expansion-panel>
-                    <br>
-                    
-            </div>
+                <div class="container">
+                    <div *ngFor="let tasks of tasksList" class="w-50 box">                    
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title><p>{{tasks.taskName}}</p>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p>{{tasks.taskDescription}}</p>
+                            <span>
+                                <button (click)="populateFormWithData(tasks)" mat-raised-button style="width: 50px; color: green; height: 30px;" >edit</button>
+                                &nbsp;
+                                <button (click)="deleteTask(tasks)" mat-raised-button style="width: 50px; color: red; height: 30px;" >delete</button>
+                            </span>
+                        </mat-expansion-panel> 
+                        <br>
+                        
+                </div>
+                <br>&nbsp;
+                </div>
 
             </div>
         </div>

@@ -33,4 +33,21 @@ public class ToDoController {
         String emailId=(String)httpServletRequest.getAttribute("user-emailId");
         return new ResponseEntity<>(userService.getLoggedInUser(emailId), HttpStatus.OK);
     }
+
+    @PostMapping("/delete-task")
+    public ResponseEntity<?> deleteTask(HttpServletRequest httpServletRequest, @RequestBody Task task){
+        String emailId=(String)httpServletRequest.getAttribute("user-emailId");
+        return new ResponseEntity<>(userService.deleteTask(task, emailId), HttpStatus.OK);
+    }
+
+    @PostMapping("/get-index")
+    public int getIndexOfTask(HttpServletRequest httpServletRequest, @RequestBody Task task){
+    String emailId=(String)httpServletRequest.getAttribute("user-emailId");
+        return userService.getIndexOfTask(task, emailId);
+    }
+    @PostMapping("/update-task/{index}")
+    public ResponseEntity<?> updateTask(HttpServletRequest httpServletRequest,@RequestBody Task task,@PathVariable(name = "index")int index){
+        String emailId=(String)httpServletRequest.getAttribute("user-emailId");
+        return new ResponseEntity<>(userService.updateTask(task, emailId, index), HttpStatus.OK);
+    }
 }

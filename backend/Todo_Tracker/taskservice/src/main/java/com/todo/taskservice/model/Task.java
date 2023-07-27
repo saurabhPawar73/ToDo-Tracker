@@ -12,7 +12,6 @@ import java.util.List;
 @Data
 public class Task {
 
-    @Id
     private String taskName;
     private String taskDescription;
 }
